@@ -1,5 +1,5 @@
 class PitchDetector {
-    constructor(sr, smallC = 0.5, defaultC = 0.97, lowerC = 25) {
+    constructor(sr, smallC = 0.5, defaultC = 0.97, lowerC = 60) {
         this.sampleRate = sr
 
         this.smallCutoff = smallC      // Peak threshold for performance reasons

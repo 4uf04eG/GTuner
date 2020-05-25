@@ -4,6 +4,7 @@ let noteText;
 let pitchText;
 
 function requestMicrophoneAccess() {
+    initializeCanvas()
     navigator.mediaDevices.getUserMedia({
         audio: true
     }).then(handleSuccess).catch(function(_) {
@@ -29,10 +30,14 @@ function updatePitch(e) {
     let pitch = pitchDetector.detectPitch(buffer)
 
     if (pitch !== -1) {
-        noteText.textContent = pitchToNote(pitch)
-        pitchText.textContent = noteDifferenceInCents(pitch, 329.63)
+        let noteNumber = pitchToNoteNumber(pitch)
+        let targetPitch = noteNumberToPitch(noteNumber)
+        let diff = pitchDifferenceInCents(pitch, targetPitch)
+
+        noteText.textContent = noteNumberToNote(noteNumber)
+        pitchText.textContent = pitch.toFixed(3) + " Hz"
+        drawPitchDifference(movingAverage(diff))
     }
 
-    // drawWaveLine(buffer)
-
+     drawWaveLine(buffer)
 }

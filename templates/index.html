@@ -2,8 +2,15 @@
 <html lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+        <link rel="stylesheet" type="text/css" href="/static/semantic/semantic.css">
+        <script
+                src="https://code.jquery.com/jquery-3.1.1.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+                crossorigin="anonymous"></script>
+        <script src="/static/semantic/semantic.js"></script>
+
+        <script type="text/javascript" src="/tuner/manual_tuner.js"></script>
         <script type="text/javascript" src="/tuner/microphone_handler.js"></script>
         <script type="text/javascript" src="/tuner/pitch_detector.js"></script>
         <script type="text/javascript" src="/tuner/visualiser.js"></script>
@@ -12,18 +19,30 @@
         <title>GTuner</title>
     </head>
 
-    <body onload="requestMicrophoneAccess()">
-        <h1>Guitar tuner</h1>
+    <body class="ui inverted segment" onload="requestMicrophoneAccess()">
+        <h1 class="ui huge header">Guitar tuner</h1>
 
-        <canvas id="wave-line" width="500" height="200"></canvas>
-        <p id="note"></p>
-        <p id="pitch"></p>
+        <div style="display: inline-block">
+            <div style="position:relative;width:380px;height:150px">
+                <canvas id="wave-line" width="380" height="100"></canvas><br>
+                <canvas id="ruler" width="380" height="50" style="z-index: 1;position: absolute"></canvas>
+                <canvas id="pitch-offset" width="380" height="50" style="z-index: 2;position: absolute"></canvas>
+            </div>
 
-        <button onclick="handleButtonClick()">E</button>
-        <button onclick="handleButtonClick()">B</button>
-        <button onclick="handleButtonClick()">G</button>
-        <button onclick="handleButtonClick()">D</button>
-        <button onclick="handleButtonClick()">A</button>
-        <button onclick="handleButtonClick()">e</button>
+
+            <div style="text-align: center">
+                <p id="note" style="font-size: 60pt; margin-bottom: 0">--</p>
+                <p id="pitch" style="font-size: 15pt; padding-bottom: 10pt">0 Hz</p>
+            </div>
+
+            <div>
+                <button class="ui inverted red basic button" id="btn-e4" onclick="handleButtonClick(this.id)">E<sub>4</sub></button>
+                <button class="ui inverted red basic button" id="btn-b" onclick="handleButtonClick(this.id)">B<sub>3</sub></button>
+                <button class="ui inverted red basic button" id="btn-g" onclick="handleButtonClick(this.id)">G<sub>3</sub></button>
+                <button class="ui inverted red basic button" id="btn-d" onclick="handleButtonClick(this.id)">D<sub>3</sub></button>
+                <button class="ui inverted red basic button" id="btn-a" onclick="handleButtonClick(this.id)">A<sub>2</sub></button>
+                <button class="ui inverted red basic button" id="btn-e2" onclick="handleButtonClick(this.id)">E<sub>2</sub></button>
+            </div>
+        </div>
     </body>
 </html>
