@@ -2,6 +2,8 @@
 <html lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=0.85, minimum-scale=0.6">
+        <link rel="icon" href="/static/png/favicon.png">
 
         <link rel="stylesheet" type="text/css" href="/static/css/semantic.min.css">
 
@@ -14,31 +16,36 @@
         <title>GTuner</title>
     </head>
 
-    <body class="ui inverted segment" onload="requestMicrophoneAccess()">
-        <h1 class="ui huge header">Guitar tuner</h1>
+    <body class="ui inverted segment" style="text-align: center" onload="requestMicrophoneAccess()">
+        <div class="ui inverted segment" style="display: inline-block">
+            <h1 class="ui huge header">Guitar tuner</h1>
+            <div id="error" class="ui red message" style="width: 380px;display:none">Unable to access microphone</div>
 
-        <div style="display: inline-block">
-            <div style="position:relative;width:380px;height:170px">
+            <div>
                 <canvas id="wave-line" width="380" height="100"></canvas>
-
-                <div style="margin-top: 10pt;margin-bottom: 10pt">
-                    <canvas id="ruler" width="380" height="50" style="z-index: 1;position: absolute"></canvas>
-                    <canvas id="pitch-offset" width="380" height="50" style="z-index: 2;position: absolute"></canvas>
+                <br>
+                <div style="margin-top: 10pt;margin-bottom: 10pt; left: 0">
+                    <canvas id="ruler" width="380" height="50" style="z-index: 1; position: absolute"></canvas>
+                    <canvas id="pitch-offset" width="380" height="50" style="z-index: 2; "></canvas>
                 </div>
             </div>
 
-            <div style="text-align: center">
-                <p id="note" style="font-size: 60pt; margin-bottom: 0">--</p>
-                <p id="pitch" style="font-size: 15pt; padding-bottom: 10pt">0 Hz</p>
+            <p id="note" style="font-size: 60pt; margin-bottom: 0">--</p>
+            <p id="pitch" style="font-size: 15pt; padding-bottom: 10pt">0 Hz</p>
+
+            <div class="ui inverted divider"></div>
+            <div style="margin-left: 3.5pt">
+                <button  class="ui inverted red basic button" id="btn-e4" onclick="handleButtonClick(this.id)">E<sub>4</sub></button>
+                <button class="ui inverted red basic button" id="btn-b3" onclick="handleButtonClick(this.id)">B<sub>3</sub></button>
+                <button class="ui inverted red basic button" id="btn-g3" onclick="handleButtonClick(this.id)">G<sub>3</sub></button>
+                <button class="ui inverted red basic button" id="btn-d3" onclick="handleButtonClick(this.id)">D<sub>3</sub></button>
+                <button class="ui inverted red basic button" id="btn-a2" onclick="handleButtonClick(this.id)">A<sub>2</sub></button>
+                <button class="ui inverted red basic button" id="btn-e2" onclick="handleButtonClick(this.id)">E<sub>2</sub></button>
             </div>
 
-            <div>
-                <button class="ui inverted red basic button" id="btn-e4" onclick="handleButtonClick(this.id)">E<sub>4</sub></button>
-                <button class="ui inverted red basic button" id="btn-b" onclick="handleButtonClick(this.id)">B<sub>3</sub></button>
-                <button class="ui inverted red basic button" id="btn-g" onclick="handleButtonClick(this.id)">G<sub>3</sub></button>
-                <button class="ui inverted red basic button" id="btn-d" onclick="handleButtonClick(this.id)">D<sub>3</sub></button>
-                <button class="ui inverted red basic button" id="btn-a" onclick="handleButtonClick(this.id)">A<sub>2</sub></button>
-                <button class="ui inverted red basic button" id="btn-e2" onclick="handleButtonClick(this.id)">E<sub>2</sub></button>
+            <div style="margin-top: 15pt">
+                <a style="float: left" href="https://github.com/4uf04eG/GTuner">Source code</a>
+                <a style="float: right" href="mailto: 4uf04eg@gmail.com">Contact author</a>
             </div>
         </div>
     </body>

@@ -4,6 +4,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 )
 
 func Start() {
@@ -11,7 +12,17 @@ func Start() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	http.HandleFunc("/", HandlePage)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(getPort(), nil))
+}
+
+func getPort() string {
+	p := os.Getenv("PORT")
+
+	if p != "" {
+		return ":" + p
+	}
+
+	return ":8080"
 }
 
 func HandlePage(response http.ResponseWriter, request *http.Request) {

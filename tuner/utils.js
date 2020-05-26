@@ -17,7 +17,7 @@ function noteNumberToPitch(noteNumber) {
 }
 
 function pitchDifferenceInCents(from, to) {
-    return Math.floor(1200 * Math.log2(from / to) * 0.5)
+    return Math.floor(1200 * Math.log2(from / to) * 0.25)
 }
 
 function movingAverage(pitch, windowSize = 5) {

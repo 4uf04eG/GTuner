@@ -7,8 +7,9 @@ function requestMicrophoneAccess() {
     initializeCanvas()
     navigator.mediaDevices.getUserMedia({
         audio: true
-    }).then(handleSuccess).catch(function(_) {
-        alert("Couldn't get access to a microphone")
+    }).then(handleSuccess).catch(function (_) {
+        let field = document.getElementById("error")
+        field.style.display = "inline-block"
     })
 }
 
@@ -39,5 +40,5 @@ function updatePitch(e) {
         drawPitchDifference(movingAverage(diff))
     }
 
-     drawWaveLine(buffer)
+    drawWaveLine(buffer)
 }

@@ -1,7 +1,19 @@
-function handleButtonClick(buttonId) {
-    let idToFile = {
+let audio;
 
+function handleButtonClick(buttonId) {
+    let fileName = "/static/mp3/" + buttonId.replace("btn-", "") + ".mp3"
+
+    if (audio) {
+        audio.pause()
+        audio.removeEventListener('ended', repeat)
     }
 
-    new Audio("/static/d2.mp3").play()
+    audio = new Audio(fileName)
+    audio.addEventListener('ended', repeat, false)
+    audio.play()
+}
+
+function repeat() {
+    this.currentTime = 0;
+    this.play();
 }

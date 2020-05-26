@@ -44,11 +44,11 @@ function drawRuler() {
 
     // Base line
     rulerContext.beginPath()
-    rulerContext.moveTo(binTopOffset, binHeight)
+    rulerContext.moveTo(0, binHeight)
     rulerContext.lineTo(rulerCanvas.width, binHeight)
 
     for (let i = 1; i < binsNum; i++) {
-        let pos = i * binGap + 3
+        let pos = i * binGap
         rulerContext.moveTo(pos, binTopOffset)
         rulerContext.lineTo(pos, binHeight)
     }
@@ -58,16 +58,16 @@ function drawRuler() {
 
     // Middle division
     rulerContext.beginPath()
-    rulerContext.moveTo(binsNum * binGap / 2 + 3, 0)
-    rulerContext.lineTo(binsNum * binGap / 2 + 3, binHeight)
+    rulerContext.moveTo(binsNum * binGap / 2, 0)
+    rulerContext.lineTo(binsNum * binGap / 2, binHeight)
     rulerContext.strokeStyle = "#ffffff"
     rulerContext.stroke()
 
     let rulerValue = -40
 
     for (let i = 1; i < binsNum; i++) {
-        let pos = i * binGap
-        let text = rulerValue > 0 ? "+" + rulerValue: rulerValue
+        let pos = i * binGap - 3
+        let text = rulerValue > 0 ? "+" + rulerValue : rulerValue
 
         rulerContext.strokeText(text, pos, binHeight + 15)
         rulerValue += 10
