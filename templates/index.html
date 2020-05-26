@@ -3,12 +3,7 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-        <link rel="stylesheet" type="text/css" href="/static/semantic/semantic.css">
-        <script
-                src="https://code.jquery.com/jquery-3.1.1.min.js"
-                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-                crossorigin="anonymous"></script>
-        <script src="/static/semantic/semantic.js"></script>
+        <link rel="stylesheet" type="text/css" href="/static/css/semantic.min.css">
 
         <script type="text/javascript" src="/tuner/manual_tuner.js"></script>
         <script type="text/javascript" src="/tuner/microphone_handler.js"></script>
@@ -23,12 +18,14 @@
         <h1 class="ui huge header">Guitar tuner</h1>
 
         <div style="display: inline-block">
-            <div style="position:relative;width:380px;height:150px">
-                <canvas id="wave-line" width="380" height="100"></canvas><br>
-                <canvas id="ruler" width="380" height="50" style="z-index: 1;position: absolute"></canvas>
-                <canvas id="pitch-offset" width="380" height="50" style="z-index: 2;position: absolute"></canvas>
-            </div>
+            <div style="position:relative;width:380px;height:170px">
+                <canvas id="wave-line" width="380" height="100"></canvas>
 
+                <div style="margin-top: 10pt;margin-bottom: 10pt">
+                    <canvas id="ruler" width="380" height="50" style="z-index: 1;position: absolute"></canvas>
+                    <canvas id="pitch-offset" width="380" height="50" style="z-index: 2;position: absolute"></canvas>
+                </div>
+            </div>
 
             <div style="text-align: center">
                 <p id="note" style="font-size: 60pt; margin-bottom: 0">--</p>
