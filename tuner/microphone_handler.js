@@ -18,6 +18,7 @@ function handleSuccess(stream) {
     const source = context.createMediaStreamSource(stream);
     const processor = context.createScriptProcessor(1024, 1, 1);
     processor.onaudioprocess = updatePitch
+    processor.connect(context.destination)
     source.connect(processor)
 
     noteText = document.getElementById("note")
